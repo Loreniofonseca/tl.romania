@@ -1,0 +1,309 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Top Header Bar */
+.top-header {
+    background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
+    color: white;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.top-header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-header a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+/* Main Header */
+header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.title-section h1 {
+    color: #c41e3a;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.title-section p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Navigation */
+nav {
+    background: #2c3e50;
+    border-bottom: 3px solid #c41e3a;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    display: inline-block;
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+nav a:hover,
+nav a.active {
+    background: #34495e;
+    border-bottom: 3px solid #ffd700;
+}
+
+/* UPDATED HERO SECTION WITH RO CITY BACKGROUND */
+.hero {
+    /* Updated path to use your uploaded image */
+    /* Added a dark gradient overlay so the white text stays readable */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('RO City.jpeg') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 100px 20px; /* Increased padding for a better look */
+    background-attachment: fixed; /* Optional: adds a parallax effect */
+}
+
+.hero h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.hero p {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Main Content Grid */
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Sections */
+section {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+section h2 {
+    color: #c41e3a;
+    border-left: 4px solid #ffd700;
+    padding-left: 15px;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+section h3 {
+    color: #2c3e50;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Cards */
+.card {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #c41e3a;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    color: #c41e3a;
+    margin-top: 0;
+}
+
+/* Sidebar */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-box {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.sidebar-box h3 {
+    color: #c41e3a;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ffd700;
+}
+
+.sidebar-box ul {
+    list-style: none;
+}
+
+.sidebar-box ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.sidebar-box ul li a {
+    color: #2c3e50;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.sidebar-box ul li a:hover {
+    color: #c41e3a;
+}
+
+/* News/Events Items */
+.news-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.news-item:last-child {
+    border-bottom: none;
+}
+
+.news-date {
+    color: #c41e3a;
+    font-weight: bold;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Footer */
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+}
+
+.footer-links {
+    margin: 20px 0;
+}
+
+.footer-links a {
+    color: #ffd700;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #c41e3a;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+    margin-top: 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background: #8b0000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h2 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+}
