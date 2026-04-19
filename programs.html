@@ -1,195 +1,302 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scholarship Program - AETLR</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <meta name="description" content="AETLR Scholarship Program for Timorese students in Romania">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0A2540;
+            --accent: #C8102E;
+        }
 
-    <!-- Top Header Bar -->
-    <div class="top-header">
-        <div class="container">
-            <div>📧 tl.romania0@gmail.com | 📞 +40 744 369 176</div>
-            <div>
-                <a href="contact.html">Contact</a>
-                <a href="about.html">About</a>
+        * {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #C8102E;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .cursor-dot {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: #C8102E;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        body:hover .cursor,
+        body:hover .cursor-dot {
+            display: block;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: #C8102E;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
+
+        .scholarship-card {
+            transition: all 0.4s ease;
+        }
+        .scholarship-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 overflow-x-hidden">
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Top Header -->
+    <div class="bg-white border-b py-3 text-sm">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-6">
+                <a href="mailto:tl.romania0@gmail.com" class="flex items-center gap-2 hover:text-red-600">
+                    <i class="fas fa-envelope"></i> tl.romania0@gmail.com
+                </a>
+                <a href="tel:+40744369176" class="flex items-center gap-2 hover:text-red-600">
+                    <i class="fas fa-phone"></i> +40 744 369 176
+                </a>
+            </div>
+            <div class="flex gap-6">
+                <a href="contact.html" class="hover:text-red-600">Contact</a>
+                <a href="about.html" class="hover:text-red-600">About</a>
             </div>
         </div>
     </div>
 
-    <!-- Main Header -->
-    <header>
-        <div class="header-content">
-            <div class="logo-section">
-                <img src="Asociatia Studentilor Timorezi Din Romania.jpeg" alt="AETLR Logo" class="logo">
-                <div class="title-section">
-                    <h1>ASSOSIASAUN ESTUDANTE TIMOR-LESTE IHA ROMANIA</h1>
-                  
-                    <p>Association of Timorese Students in Romania</p>
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <img src="Asociatia Studentilor Timorezi Din Romania.jpeg" alt="AETLR Logo" class="w-12 h-12 rounded-xl object-cover">
+                <div>
+                    <h1 class="text-xl font-bold text-gray-900">AETLR</h1>
+                    <p class="text-xs text-gray-500">Assosiasaun Estudante Timor-Leste</p>
                 </div>
             </div>
-        </div>
-    </header>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="index.html">HOME</a>
-            <a href="about.html">ABOUT US</a>
-            <a href="programs.html" class="active">PROGRAMS</a>
-            <a href="contact.html">CONTACT</a>
-            <a href="scholarship.html">SCHOLARSHIP</a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="index.html" class="nav-link text-gray-700 hover:text-red-600">HOME</a>
+                <a href="about.html" class="nav-link text-gray-700 hover:text-red-600">ABOUT US</a>
+                
+                <div class="relative group">
+                    <a href="programs.html" class="nav-link text-red-600 active flex items-center gap-1">
+                        PROGRAMS <i class="fas fa-chevron-down text-xs"></i>
+                    </a>
+                    <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-2xl py-3 px-6 w-52 mt-3 z-50">
+                        <a href="scholarship.html" class="block py-2 hover:text-red-600 font-medium">Scholarship</a>
+                    </div>
+                </div>
+
+                <a href="contact.html" class="nav-link text-gray-700 hover:text-red-600">CONTACT</a>
+            </div>
+
+            <a href="contact.html" class="bg-red-600 text-white px-7 py-3 rounded-2xl font-semibold flex items-center gap-2 hover:scale-105">
+                <i class="fas fa-paper-plane"></i> Apply Now
+            </a>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="content-grid">
-        <!-- Main Content Area -->
-        <div class="main-content">
-
-            <section>
-                <h2>🎓 Scholarship Program / Programa Bolsas de Estudu</h2>
-                <p>
-                    The AETLR Scholarship Program is designed to support Timorese students pursuing higher education in Romania. 
-                    Our goal is to provide financial assistance, academic guidance, and mentorship opportunities.
-                </p>
-                <p><strong>Tetum:</strong> Programa Bolsa AETLR nian halo atu apoia estudante Timor oan sira ne’ebé estuda iha Romania. 
-                Objetivu mak fornese apoiu finanseiru, orientasaun akademiku no oportunidade mentoria.</p>
-            </section>
-
-            <section>
-                <div class="card">
-                    <h3>📌 Available Scholarships</h3>
-                    <ul>
-                        <li>Romanian Government Scholarship</li>
-                        
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>💰 Scholarship Coverage</h3>
-                    <ul>
-                        <li>Tuition fee coverage</li>
-                        <li>Monthly living allowance</li>
-                        <li>Accommodation support</li>
-                        <li>Health insurance</li>
-                        <li>Research funding (for Master & PhD)</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>📋 Eligibility Criteria</h3>
-                    <ul>
-                        <li>Timorese citizenship</li>
-                        <li>Strong academic record</li>
-                        <li>Admission to a Romanian university</li>
-                        <li>Complete required documents</li>
-                        <li>Meet language requirements (Romanian/English)</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>📄 Required Documents</h3>
-                    <ul>
-                        <li>Academic transcripts</li>
-                        <li>Passport copy</li>
-                        <li>Recommendation letter</li>
-                        <li>CV (Curriculum Vitae)</li>
-                        <li>Language certificate (if required)</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>🗓️ Application Timeline</h3>
-                    <ul>
-                        <li>Application Opens: February 16, 2026</li>
-                        <li>Information Session: February 20, 2026</li>
-                        <li>Application Deadline: March 30, 2026</li>
-                        <li>Announcement of Results: May 2026</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>📝 How to Apply</h3>
-                    <ol>
-                        <li>Prepare all required documents</li>
-                        <li>Complete the online application form</li>
-                        <li>Submit before the deadline</li>
-                        <li>Attend interview (if required)</li>
-                    </ol>
-                    <a href="contact.html" class="btn">Apply Now</a>
-                </div>
-
-                <div class="card">
-                    <h3>🤝 Application Support</h3>
-                    <p>AETLR provides assistance for scholarship applicants:</p>
-                    <ul>
-                        <li>Document review</li>
-                        <li>Motivation letter guidance</li>
-                        <li>Interview preparation</li>
-                        <li>University selection advice</li>
-                    </ul>
-                </div>
-
-            </section>
-
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-[#0A2540] via-[#1E3A5F] to-[#0A2540] text-white py-28 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full mb-6">
+                <span class="text-3xl">🎓</span>
+                <span class="font-medium tracking-wider">SCHOLARSHIP PROGRAM</span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                Programa Bolsas de Estudu
+            </h1>
+            <p class="text-xl max-w-3xl mx-auto opacity-90">
+                Supporting Timorese students in Romania with financial assistance, academic guidance, and full community support.
+            </p>
+            <a href="contact.html" class="mt-10 inline-block bg-white text-red-600 font-semibold px-10 py-5 rounded-3xl text-lg hover:scale-110 shadow-xl">
+                Apply for Scholarship Now
+            </a>
         </div>
+    </section>
 
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-box">
-                <h3>📋 How to Apply</h3>
-                <p>Most scholarships are available for AETLR members!</p>
-                <ul>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="#">Become a Member</a></li>
-                    <li><a href="#">Application Form</a></li>
-                </ul>
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid md:grid-cols-12 gap-12">
+
+            <!-- Main Content -->
+            <div class="md:col-span-8 space-y-12">
+
+                <div class="scholarship-card bg-white rounded-3xl p-8 shadow-sm border">
+                    <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+                        <i class="fas fa-medal text-red-600"></i> Available Scholarships
+                    </h3>
+                    <ul class="grid md:grid-cols-2 gap-4 text-lg">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-500"></i> Romanian Government Scholarship (RGS)</li>
+                    </ul>
+                </div>
+
+                <div class="scholarship-card bg-white rounded-3xl p-8 shadow-sm border">
+                    <h3 class="text-2xl font-semibold mb-6">💰 Scholarship Coverage</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                        <div class="text-center p-4 bg-gray-50 rounded-2xl">Tuition Fees</div>
+                        <div class="text-center p-4 bg-gray-50 rounded-2xl">Monthly Stipend</div>
+                        <div class="text-center p-4 bg-gray-50 rounded-2xl">Accommodation</div>
+                        <div class="text-center p-4 bg-gray-50 rounded-2xl">Health Insurance</div>
+                        <div class="text-center p-4 bg-gray-50 rounded-2xl">Research Grant</div>
+                    </div>
+                </div>
+
+                <div class="scholarship-card bg-white rounded-3xl p-8 shadow-sm border">
+                    <h3 class="text-2xl font-semibold mb-6">📋 Eligibility Criteria</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex gap-3"><span class="text-red-600">•</span> Timor-Leste Citizen</li>
+                        <li class="flex gap-3"><span class="text-red-600">•</span> Strong academic record</li>
+                        <li class="flex gap-3"><span class="text-red-600">•</span> Accepted by a Romanian university</li>
+                        <li class="flex gap-3"><span class="text-red-600">•</span> Proficient in English or Romanian</li>
+                    </ul>
+                </div>
+
+                <div class="scholarship-card bg-white rounded-3xl p-8 shadow-sm border">
+                    <h3 class="text-2xl font-semibold mb-6">📄 Required Documents</h3>
+                    <ul class="grid md:grid-cols-2 gap-y-4 text-gray-700">
+                        <li>• Academic transcripts & diploma</li>
+                        <li>• Passport copy</li>
+                        <li>• 2 Recommendation letters</li>
+                        <li>• Curriculum Vitae (CV)</li>
+                        <li>• Motivation Letter</li>
+                        <li>• Language certificate</li>
+                    </ul>
+                </div>
+
+                <div class="scholarship-card bg-white rounded-3xl p-8 shadow-sm border">
+                    <h3 class="text-2xl font-semibold mb-6">🗓️ Important Timeline 2026</h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-6">
+                            <div class="w-28 font-medium text-red-600">16 Feb 2026</div>
+                            <div>Applications Open</div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="w-28 font-medium text-red-600">20 Feb 2026</div>
+                            <div>Information Session</div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="w-28 font-medium text-red-600">30 Mar 2026</div>
+                            <div>Application Deadline</div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="w-28 font-medium text-red-600">May 2026</div>
+                            <div>Results Announced</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scholarship-card bg-white rounded-3xl p-10 shadow-sm border text-center">
+                    <h3 class="text-3xl font-bold mb-4">Ready to Apply?</h3>
+                    <p class="text-gray-600 mb-8">Our team is ready to help you through every step of the application process.</p>
+                    <a href="contact.html" class="inline-block bg-red-600 text-white px-12 py-6 rounded-3xl text-lg font-semibold hover:scale-105">
+                        Submit Your Application
+                    </a>
+                </div>
             </div>
 
-            <div class="sidebar-box">
-                <h3>⏰ Application Schedule</h3>
-                <div class="news-item">
-                    <p class="news-date">Feb 16, 2026</p>
-                    <p>Applications Open</p>
-                </div>
-                <div class="news-item">
-                    <p class="news-date">Feb 20, 2026</p>
-                    <p>Information Session</p>
-                </div>
-                <div class="news-item">
-                    <p class="news-date">Mar 30, 2026</p>
-                    <p>Application Deadline</p>
-                </div>
-            </div>
+            <!-- Sidebar -->
+            <div class="md:col-span-4 space-y-8">
 
-            <div class="sidebar-box">
-                <h3>📞 Need Help?</h3>
-                <p>Contact our scholarship coordinators:</p>
-                <p><strong>Email:</strong> scholarship@aetlr.ro</p>
-                <p><strong>Phone:</strong> +40 744 369 176</p>
+                <div class="bg-white rounded-3xl p-8 shadow-sm">
+                    <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+                        <i class="fas fa-headset text-red-600"></i> Need Help?
+                    </h3>
+                    <p class="mb-4"><strong>Email:</strong><br>
+                        <a href="mailto:scholarship@aetlr.ro" class="text-red-600 hover:underline">scholarship@aetlr.ro</a>
+                    </p>
+                    <p><strong>Phone / WhatsApp:</strong><br>
+                        <a href="tel:+40744369176" class="text-red-600 hover:underline">+40 744 369 176</a>
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 shadow-sm">
+                    <h3 class="text-2xl font-semibold mb-6">Application Support</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Document Review</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Motivation Letter Help</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Interview Preparation</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> University Guidance</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gradient-to-br from-red-600 to-red-700 text-white rounded-3xl p-8 shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4">📢 Latest Update</h3>
+                    <p class="font-medium">RGS Scholarship is now open!</p>
+                    <p class="text-sm opacity-90 mt-2">Deadline: 30 March 2026</p>
+                </div>
             </div>
-        </aside>
+        </div>
     </div>
 
     <!-- Footer -->
-    <footer>
-        <h3>ASSOSIASAUN ESTUDANTE TIMOR-LESTE IHA ROMANIA</h3>
-        <p>Association of Timorese Students in Romania</p>
-        
-        <div class="footer-links">
-            <a href="about.html">About</a>
-            <a href="events.html">Events</a>
-            <a href="programs.html">Programs</a>
-            <a href="contact.html">Contact</a>
-            <a href="#">Privacy Policy</a>
+    <footer class="bg-[#0A2540] text-white py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h3 class="text-3xl font-bold mb-2">AETLR</h3>
+            <p class="text-gray-400 mb-8">Assosiasaun Estudante Timor-Leste iha Romania</p>
+            
+            <div class="flex flex-wrap justify-center gap-8 text-sm mb-10">
+                <a href="about.html" class="hover:text-red-400">About</a>
+                <a href="programs.html" class="hover:text-red-400">Programs</a>
+                <a href="scholarship.html" class="hover:text-red-400">Scholarship</a>
+                <a href="contact.html" class="hover:text-red-400">Contact</a>
+            </div>
+
+            <p class="text-sm text-gray-400">© 2026 AETLR. All rights reserved.</p>
+            <p class="text-sm text-gray-500 mt-2">🇹🇱 Building bridges between Timor-Leste and Romania 🇷🇴</p>
         </div>
-        
-        <p>&copy; 2026 Assosiasaun Estudante Timor-Leste iha Romania. All rights reserved.</p>
-        <p>🇹🇱 Building bridges between Timor-Leste and Romania 🇷🇴</p>
     </footer>
 
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+        });
+
+        document.addEventListener('mousedown', () => cursor.style.transform = 'translate(-50%, -50%) scale(0.6)');
+        document.addEventListener('mouseup', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
+    </script>
 </body>
 </html>
