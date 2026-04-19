@@ -4,129 +4,248 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - AETLR</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0A2540;
+            --accent: #C8102E;
+        }
 
-    <div class="top-header">
-        <div class="container">
-            <div>
-                📧 <a href="mailto:tl.romania0@gmail.com">tl.romania0@gmail.com</a> | 
-                📞 <a href="tel:+40744369176">+40 744 369 176</a>
+        * {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #C8102E;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .cursor-dot {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: #C8102E;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        body:hover .cursor,
+        body:hover .cursor-dot {
+            display: block;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: #C8102E;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
+
+        .card {
+            transition: all 0.4s ease;
+        }
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 overflow-x-hidden">
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Top Header -->
+    <div class="bg-white border-b py-3 text-sm">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-6">
+                <a href="mailto:tl.romania0@gmail.com" class="flex items-center gap-2 hover:text-red-600">
+                    <i class="fas fa-envelope"></i> tl.romania0@gmail.com
+                </a>
+                <a href="tel:+40744369176" class="flex items-center gap-2 hover:text-red-600">
+                    <i class="fas fa-phone"></i> +40 744 369 176
+                </a>
             </div>
-            <div>
-                <a href="contact.html">Contact</a>
-                <a href="about.html">About</a>
+            <div class="flex gap-6">
+                <a href="contact.html" class="hover:text-red-600">Contact</a>
+                <a href="about.html" class="hover:text-red-600">About</a>
             </div>
         </div>
     </div>
 
-    <header>
-        <div class="header-content container">
-            <div class="logo-section">
-                <img src="Asociatia Studentilor Timorezi Din Romania.jpeg" alt="AETLR Logo" class="logo">
-                <div class="title-section">
-                    <h1>ASSOSIASAUN ESTUDANTE TIMOR-LESTE IHA ROMANIA</h1>
-                    <p>Association of Timorese Students in Romania</p>
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <img src="Asociatia Studentilor Timorezi Din Romania.jpeg" alt="AETLR Logo" class="w-12 h-12 rounded-xl object-cover">
+                <div>
+                    <h1 class="text-xl font-bold text-gray-900">AETLR</h1>
+                    <p class="text-xs text-gray-500">Association of Timorese Students in Romania</p>
                 </div>
             </div>
-        </div>
-    </header>
 
-    <nav>
-        <div class="nav-container container">
-            <a href="index.html" class="active">HOME</a>
-            <a href="about.html">ABOUT US</a>
-            <a href="programs.html">PROGRAMS</a>
-            <a href="contact.html">CONTACT</a>
-            <a href="scholarship.html">SCHOLARSHIP</a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="index.html" class="nav-link text-red-600 active">HOME</a>
+                <a href="about.html" class="nav-link text-gray-700 hover:text-red-600">ABOUT US</a>
+                <a href="programs.html" class="nav-link text-gray-700 hover:text-red-600">PROGRAMS</a>
+                <a href="scholarship.html" class="nav-link text-gray-700 hover:text-red-600">SCHOLARSHIP</a>
+                <a href="contact.html" class="nav-link text-gray-700 hover:text-red-600">CONTACT</a>
+            </div>
+
+            <a href="scholarship.html" class="bg-red-600 text-white px-7 py-3 rounded-2xl font-semibold flex items-center gap-2 hover:scale-105">
+                <i class="fas fa-graduation-cap"></i> Explore Scholarships
+            </a>
         </div>
     </nav>
 
-    <div class="hero">
-        <div class="container">
-            <h2>Bem-vindo ba Komunidade Estudante Timor-Leste</h2>
-            <p>Supporting Timorese students in Romania through education, culture, and community building</p>
-            <a href="scholarship.html" class="btn">Explore Scholarships</a>
+    <!-- Hero Section -->
+    <section class="hero bg-gradient-to-br from-[#0A2540] via-[#1E3A5F] to-[#0A2540] text-white min-h-screen flex items-center relative">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              Bem-vindo ba Komunidade Estudante Timor-Leste
+            </h2>
+            <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-10 opacity-90">
+                Supporting Timorese students through education, culture, and community building.
+            </p>
+            <a href="scholarship.html" 
+               class="inline-block bg-white text-red-600 font-semibold px-10 py-5 rounded-3xl text-lg hover:scale-110 shadow-2xl">
+                Explore Scholarships
+            </a>
         </div>
-    </div>
 
-    <div class="content-grid container">
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center">
+            <p class="text-xs tracking-widest mb-2">SCROLL TO EXPLORE</p>
+            <div class="w-px h-12 bg-gradient-to-b from-transparent via-white to-transparent"></div>
+        </div>
+    </section>
 
-        <div class="main-content">
-            <section>
-                <h2>Welcome to AETLR</h2>
-                <p>
-                    Assosiasaun Estudante Timor-Leste iha Romania (AETLR) 
-                    supports Timorese students studying in Romania by promoting 
-                    academic success, cultural exchange, and community unity.
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid md:grid-cols-12 gap-12">
+            
+            <!-- Left Content -->
+            <div class="md:col-span-8">
+                <h2 class="text-4xl font-bold mb-6">Welcome to <span class="text-red-600">AETLR</span></h2>
+                <p class="text-lg leading-relaxed text-gray-600 mb-12">
+                    The Association of Timorese Students in Romania (AETLR) is dedicated to supporting Timorese students 
+                    studying in Romania by promoting academic success, cultural exchange, and a strong sense of community.
                 </p>
 
-                <div class="card">
-                    <h3>🎓 Academic Excellence</h3>
-                    <p>Peer tutoring, study groups, and mentorship programs.</p>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="card bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                        <div class="text-4xl mb-4">🎓</div>
+                        <h3 class="font-semibold text-xl mb-3">Academic Excellence</h3>
+                        <p class="text-gray-600">Peer tutoring, study groups, and mentorship programs.</p>
+                    </div>
+                    <div class="card bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                        <div class="text-4xl mb-4">🌍</div>
+                        <h3 class="font-semibold text-xl mb-3">Cultural Connection</h3>
+                        <p class="text-gray-600">Cultural events and celebrations throughout the year.</p>
+                    </div>
+                    <div class="card bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                        <div class="text-4xl mb-4">🤝</div>
+                        <h3 class="font-semibold text-xl mb-3">Community Support</h3>
+                        <p class="text-gray-600">A welcoming network helping students adapt to life in Romania.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="md:col-span-4 space-y-8">
+                <!-- Latest News -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm">
+                    <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+                        <i class="fas fa-bullhorn text-red-600"></i> Latest News
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-xs text-gray-500">February 16, 2026</p>
+                            <p class="font-medium">RGS Scholarship is Now Open</p>
+                            <a href="scholarship.html" class="text-red-600 text-sm hover:underline">Apply Now →</a>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500">February 20, 2026</p>
+                            <p class="font-medium">Information Session - Scholarship</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="card">
-                    <h3>🌍 Cultural Connection</h3>
-                    <p>Cultural events and celebrations throughout the year.</p>
+                <!-- Social Media -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm">
+                    <h3 class="text-2xl font-semibold mb-6">Follow Us</h3>
+                    <div class="flex gap-4">
+                        <a href="https://www.instagram.com/tl.romania/" target="_blank"
+                           class="w-12 h-12 bg-gradient-to-br from-pink-500 to-red-600 text-white rounded-2xl flex items-center justify-center text-2xl hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@tl_romania5" target="_blank"
+                           class="w-12 h-12 bg-black text-white rounded-2xl flex items-center justify-center text-2xl hover:scale-110">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
                 </div>
-
-                <div class="card">
-                    <h3>🤝 Community Support</h3>
-                    <p>A welcoming network helping students navigate life in Romania.</p>
-                </div>
-            </section>
-
-            <section>
-                <h2>Latest Updates</h2>
-                <div class="card">
-                    <h3>📢 Scholarship RGS Open</h3>
-                    <p class="news-date">February 16, 2026</p>
-                    <p>The RGS Scholarship is now officially open for applications. All eligible students are encouraged to apply.</p>
-                    <a href="scholarship.html" class="btn">Apply Now</a>
-                </div>
-            </section>
+            </div>
         </div>
-
-        <aside class="sidebar">
-            <div class="sidebar-box">
-                <h3>📢 Latest News</h3>
-                <div class="news-item">
-                    <p class="news-date">February 16, 2026</p>
-                    <p>Scholarship RGS Open</p>
-                </div>
-                <div class="news-item">
-                    <p class="news-date">February 20, 2026</p>
-                    <p>Info Session about Scholarship</p>
-                </div>
-            </div>
-
-            <div class="sidebar-box">
-                <h3>📱 Follow Us</h3>
-                <ul>
-                    <li><a href="https://www.instagram.com/tl.romania/" target="_blank">📷 Instagram (@tl.romania)</a></li>
-                    <li><a href="https://www.tiktok.com/@tl_romania5" target="_blank">🎵 TikTok (@tl_romania5)</a></li>
-                </ul>
-            </div>
-        </aside>
-
     </div>
 
-    <footer>
-        <div class="container">
-            <h3>ASSOSIASAUN ESTUDANTE TIMOR-LESTE IHA ROMANIA</h3>
-            <p>Association of Timorese Students in Romania</p>
-            <div class="footer-links">
-                <a href="about.html">About</a>
-                <a href="events.html">Events</a>
-                <a href="programs.html">Programs</a>
-                <a href="contact.html">Contact</a>
+    <!-- Footer -->
+    <footer class="bg-[#0A2540] text-white py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h3 class="text-3xl font-bold mb-2">AETLR</h3>
+            <p class="text-gray-400 mb-8">Association of Timorese Students in Romania</p>
+            
+            <div class="flex flex-wrap justify-center gap-8 text-sm mb-10">
+                <a href="about.html" class="hover:text-red-400">About</a>
+                <a href="programs.html" class="hover:text-red-400">Programs</a>
+                <a href="scholarship.html" class="hover:text-red-400">Scholarship</a>
+                <a href="contact.html" class="hover:text-red-400">Contact</a>
             </div>
-            <p>&copy; 2026 Assosiasaun Estudante Timor-Leste iha Romania. All rights reserved.</p>
-            <p>🇹🇱 Building bridges between Timor-Leste and Romania 🇷🇴</p>
+
+            <p class="text-sm text-gray-400">© 2026 AETLR. All rights reserved.</p>
+            <p class="text-sm text-gray-500 mt-2">🇹🇱 Building bridges between Timor-Leste and Romania 🇷🇴</p>
         </div>
     </footer>
 
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+        });
+
+        document.addEventListener('mousedown', () => cursor.style.transform = 'translate(-50%, -50%) scale(0.6)');
+        document.addEventListener('mouseup', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
+    </script>
 </body>
 </html>
