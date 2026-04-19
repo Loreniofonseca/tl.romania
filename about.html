@@ -4,157 +4,327 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - AETLR</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <meta name="description" content="Learn about the Association of Timorese Students in Romania">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0A2540;
+            --accent: #C8102E;
+        }
 
-    <!-- Top Header Bar -->
-    <div class="top-header">
-        <div class="container">
-            <div>
-                📧 <a href="mailto:tl.romania0@gmail.com">tl.romania0@gmail.com</a> |
-                📞 <a href="tel:+744369176">+40 744 369 176</a>
+        * {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #C8102E;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .cursor-dot {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: #C8102E;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        body:hover .cursor,
+        body:hover .cursor-dot {
+            display: block;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: #C8102E;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
+
+        .leader-card {
+            transition: all 0.4s ease;
+        }
+        .leader-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px -15px rgb(0 0 0 / 0.15);
+        }
+
+        /* LEADERSHIP TEAM - BIGGER SIZE */
+        .leader-img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border: 6px solid #fff;
+            box-shadow: 0 15px 25px -5px rgb(0 0 0 / 0.15);
+        }
+
+        .leader-name {
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 overflow-x-hidden">
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Top Header -->
+    <div class="bg-white border-b py-3 text-sm">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-6">
+                <a href="mailto:tl.romania0@gmail.com" class="flex items-center gap-2 hover:text-red-600">
+                    <i class="fas fa-envelope"></i> tl.romania0@gmail.com
+                </a>
+                <a href="tel:+40744369176" class="flex items-center gap-2 hover:text-red-600">
+                    <i class="fas fa-phone"></i> +40 744 369 176
+                </a>
             </div>
-            <div>
-                <a href="contact.html">Contact</a>
-                <a href="about.html">About</a>
+            <div class="flex gap-6">
+                <a href="contact.html" class="hover:text-red-600">Contact</a>
+                <a href="about.html" class="text-red-600 font-medium">About</a>
             </div>
         </div>
     </div>
 
-    <!-- Main Header -->
-    <header>
-        <div class="header-content">
-            <div class="logo-section">
-                <img src="Asociatia Studentilor Timorezi Din Romania.jpeg" alt="AETLR Logo" class="logo">
-                <div class="title-section">
-                    <h1>ASSOSIASAUN ESTUDANTE TIMOR-LESTE IHA ROMANIA</h1>
-                
-                    <p>Association of Timorese Students in Romania</p>
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <img src="Asociatia Studentilor Timorezi Din Romania.jpeg" alt="AETLR Logo" class="w-12 h-12 rounded-xl object-cover">
+                <div>
+                    <h1 class="text-xl font-bold text-gray-900">AETLR</h1>
+                    <p class="text-xs text-gray-500">Association of Timorese Students in Romania</p>
                 </div>
             </div>
-        </div>
-    </header>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="index.html">HOME</a>
-            <a href="about.html" class="active">ABOUT US</a>
-            <a href="programs.html">PROGRAMS</a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="index.html" class="nav-link text-gray-700 hover:text-red-600">HOME</a>
+                <a href="about.html" class="nav-link text-red-600 active">ABOUT US</a>
+                
+                <div class="relative group">
+                    <a href="programs.html" class="nav-link text-gray-700 hover:text-red-600 flex items-center gap-1">
+                        PROGRAMS <i class="fas fa-chevron-down text-xs"></i>
+                    </a>
+                    <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-2xl py-3 px-6 w-52 mt-3 z-50">
+                        <a href="scholarship.html" class="block py-2 hover:text-red-600">Scholarship</a>
+                    </div>
+                </div>
 
-            <a href="contact.html">CONTACT</a>
-            <a href="scholarship.html">SCHOLARSHIP</a>
+                <a href="contact.html" class="nav-link text-gray-700 hover:text-red-600">CONTACT</a>
+            </div>
+
+            <a href="scholarship.html" class="bg-red-600 text-white px-6 py-3 rounded-2xl font-semibold flex items-center gap-2 hover:scale-105">
+                <i class="fas fa-graduation-cap"></i> Scholarships
+            </a>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="content-grid">
-        <div class="main-content">
-
-            <!-- About Section -->
-            <section>
-                <h2>About Us / Kona-Ba Ami</h2>
-                <p>
-                    Assosiasaun Estudante Timor-Leste iha Romania (AETLR) is a student association dedicated to supporting Timorese students studying in Romania. Our mission is to foster cultural exchange, provide academic support, and build a strong community.
-                </p>
-
-                <div class="card">
-                    <h3>🎯 Our Mission / Ita-Nia Misaun</h3>
-                    <p>To create a supportive environment where Timorese students can excel academically while maintaining their cultural identity.</p>
-                </div>
-
-                <div class="card">
-                    <h3>👁️ Our Vision / Ita-Nia Vizaun</h3>
-                    <p>To be the leading platform for Timorese students in Romania, promoting excellence in education and cultural preservation.</p>
-                </div>
-
-                <div class="card">
-                    <h3>💡 Our Values / Ita-Nia Valores</h3>
-                    <ul>
-                        <li>✓ Unity and Community Support</li>
-                        <li>✓ Academic Excellence</li>
-                        <li>✓ Cultural Preservation</li>
-                        <li>✓ Leadership Development</li>
-                        <li>✓ International Cooperation</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Leadership Section -->
-            <section>
-                <h2>Leadership Team / Ekipa Lideransa</h2>
-
-                <div class="card">
-                    <h3>👑 President / Prezidente</h3>
-                    <p><strong>Lorenio Lirio Fonseca</strong></p>
-                    <p>Student at University of Aurel Vlaicu in Arad, Romania.</p>
-                    <p>Leading the association and representing members officially.</p>
-                </div>
-
-                <div class="card">
-                    <h3>🤝 Vice President / Vise-Prezidente</h3>
-                    <p><strong>Pricilia Deoneia L.C Amaral</strong></p>
-                    <p>Student at University of Craiova, Romania.</p>
-                    <p>Supporting the president and managing operations.</p>
-                </div>
-
-                <div class="card">
-                    <h3>📝 Secretary / Sekretariu</h3>
-                    <p><strong>Regina Iren Bui</strong></p>
-                    <p>Student at Alexandru Ioan Cuza University of Iași, Romania.</p>
-                    <p>Managing communications and documentation.</p>
-                </div>
-
-                <div class="card">
-                    <h3>💰 Treasurer / Tezoureira</h3>
-                    <p><strong>Nericia Lelita da Costa</strong></p>
-                    <p>Student at University of Aurel Vlaicu in Arad, Romania.</p>
-                    <p>Managing finances and budget allocation.</p>
-                </div>
-            </section>
-
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-[#0A2540] to-[#1E3A5F] text-white py-24">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">About Us</h1>
+            <p class="text-xl max-w-2xl mx-auto opacity-90">
+                Connecting Timorese students in Romania through education, culture, and community
+            </p>
         </div>
+    </section>
 
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-box">
-                <h3>📢 Latest News</h3>
-                <div class="news-item">
-                    <p class="news-date">February 16, 2026</p>
-                    <p>Scholarship RGS Open</p>
-                </div>
-                <div class="news-item">
-                    <p class="news-date">February 20, 2026</p>
-                    <p>Info Session about Scholarship</p>
-                </div>
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid md:grid-cols-12 gap-12">
+
+            <!-- Left Content -->
+            <div class="md:col-span-8 space-y-16">
+
+                <!-- About Section -->
+                <section>
+                    <h2 class="text-4xl font-bold mb-6">Who We Are</h2>
+                    <p class="text-lg leading-relaxed text-gray-600">
+                        The Association of Timorese Students in Romania (AETLR) is a student-led organization 
+                        dedicated to supporting Timorese students pursuing higher education in Romania. 
+                        We foster academic excellence, cultural preservation, and a strong community spirit.
+                    </p>
+
+                    <div class="grid md:grid-cols-3 gap-6 mt-12">
+                        <div class="card bg-white p-8 rounded-3xl shadow-sm border">
+                            <h3 class="text-2xl font-semibold mb-4 text-red-600">🎯 Our Mission</h3>
+                            <p class="text-gray-600">To create a supportive environment where Timorese students can excel academically while maintaining their cultural identity.</p>
+                        </div>
+                        <div class="card bg-white p-8 rounded-3xl shadow-sm border">
+                            <h3 class="text-2xl font-semibold mb-4 text-red-600">👁️ Our Vision</h3>
+                            <p class="text-gray-600">To be the leading platform for Timorese students in Romania, promoting excellence in education and cultural preservation.</p>
+                        </div>
+                        <div class="card bg-white p-8 rounded-3xl shadow-sm border">
+                            <h3 class="text-2xl font-semibold mb-4 text-red-600">💡 Our Values</h3>
+                            <ul class="space-y-3 text-gray-600">
+                                <li>✓ Unity and Community Support</li>
+                                <li>✓ Academic Excellence</li>
+                                <li>✓ Cultural Preservation</li>
+                                <li>✓ Leadership Development</li>
+                                <li>✓ International Cooperation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Leadership Team - BIGGER -->
+                <section>
+                    <h2 class="text-4xl font-bold mb-12">Leadership Team</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-10">
+
+                        <!-- President -->
+                        <div class="leader-card bg-white rounded-3xl shadow-sm overflow-hidden text-center">
+                            <div class="pt-10">
+                                <img src="./ori.jpeg" 
+                                     alt="Lorenio Lirio Fonseca" 
+                                     class="leader-img mx-auto rounded-full">
+                            </div>
+                            <div class="p-8">
+                                <h3 class="leader-name">Lorenio Lirio Fonseca</h3>
+                                <p class="text-red-600 font-semibold text-lg">President</p>
+                                <p class="text-sm text-gray-500 mt-1">Aurel Vlaicu University of Arad</p>
+                                <p class="mt-5 text-gray-600">
+                                    Leads the association and officially represents all members.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Vice President -->
+                        <div class="leader-card bg-white rounded-3xl shadow-sm overflow-hidden text-center">
+                            <div class="pt-10">
+                                <img src="./Luna.jpeg" 
+                                     alt="Pricilia Deoneia L.C Amaral" 
+                                     class="leader-img mx-auto rounded-full">
+                            </div>
+                            <div class="p-8">
+                                <h3 class="leader-name">Pricilia Deoneia L.C Amaral</h3>
+                                <p class="text-red-600 font-semibold text-lg">Vice President</p>
+                                <p class="text-sm text-gray-500 mt-1">University of Craiova</p>
+                                <p class="mt-5 text-gray-600">
+                                    Supports daily operations and assists the President.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Secretary -->
+                        <div class="leader-card bg-white rounded-3xl shadow-sm overflow-hidden text-center">
+                            <div class="pt-10">
+                                <img src="./Irene.jpeg" 
+                                     alt="Regina Iren Bui" 
+                                     class="leader-img mx-auto rounded-full">
+                            </div>
+                            <div class="p-8">
+                                <h3 class="leader-name">Regina Iren Bui</h3>
+                                <p class="text-red-600 font-semibold text-lg">Secretary</p>
+                                <p class="text-sm text-gray-500 mt-1">Alexandru Ioan Cuza University of Iași</p>
+                                <p class="mt-5 text-gray-600">
+                                    Handles communication and official documentation.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Treasurer -->
+                        <div class="leader-card bg-white rounded-3xl shadow-sm overflow-hidden text-center">
+                            <div class="pt-10">
+                                <img src="./Nericia.jpeg" 
+                                     alt="Nericia Lelita da Costa" 
+                                     class="leader-img mx-auto rounded-full">
+                            </div>
+                            <div class="p-8">
+                                <h3 class="leader-name">Nericia Lelita da Costa</h3>
+                                <p class="text-red-600 font-semibold text-lg">Treasurer</p>
+                                <p class="text-sm text-gray-500 mt-1">Aurel Vlaicu University of Arad</p>
+                                <p class="mt-5 text-gray-600">
+                                    Manages finances and budget allocation.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
             </div>
 
-            <div class="sidebar-box">
-                <h3>🔗 Quick Links</h3>
-                <ul>
-                    <li><a href="#">Member Registration</a></li>
-                    <li><a href="events.html">Event Calendar</a></li>
-                    <li><a href="gallery.html">Photo Gallery</a></li>
-                </ul>
+            <!-- Sidebar -->
+            <div class="md:col-span-4 space-y-8">
+                <div class="bg-white rounded-3xl p-8 shadow-sm">
+                    <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+                        <i class="fas fa-bullhorn text-red-600"></i> Latest News
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-xs text-gray-500">February 16, 2026</p>
+                            <p class="font-medium">RGS Scholarship Open</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500">February 20, 2026</p>
+                            <p class="font-medium">Scholarship Information Session</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </aside>
+        </div>
     </div>
 
     <!-- Footer -->
-    <footer>
-        <h3>ASSOSIASAUN ESTUDANTE TIMOR-LESTE IHA ROMANIA</h3>
-        <p>Association of Timorese Students in Romania</p>
+    <footer class="bg-[#0A2540] text-white py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h3 class="text-3xl font-bold mb-2">AETLR</h3>
+            <p class="text-gray-400 mb-8">Association of Timorese Students in Romania</p>
+            
+            <div class="flex flex-wrap justify-center gap-8 text-sm mb-10">
+                <a href="about.html" class="hover:text-red-400">About</a>
+                <a href="programs.html" class="hover:text-red-400">Programs</a>
+                <a href="scholarship.html" class="hover:text-red-400">Scholarship</a>
+                <a href="contact.html" class="hover:text-red-400">Contact</a>
+            </div>
 
-        <div class="footer-links">
-            <a href="about.html">About</a>
-            <a href="programs.html">Programs</a>
-            <a href="contact.html">Contact</a>
+            <p class="text-sm text-gray-400">© 2026 AETLR. All rights reserved.</p>
+            <p class="text-sm text-gray-500 mt-2">🇹🇱 Building bridges between Timor-Leste and Romania 🇷🇴</p>
         </div>
-
-        <p>&copy; 2026 AETLR. All rights reserved.</p>
-        <p>🇹🇱 Building bridges between Timor-Leste and Romania 🇷🇴</p>
     </footer>
 
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+        });
+
+        document.addEventListener('mousedown', () => cursor.style.transform = 'translate(-50%, -50%) scale(0.6)');
+        document.addEventListener('mouseup', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
+    </script>
 </body>
 </html>
