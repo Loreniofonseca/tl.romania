@@ -4,144 +4,284 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - AETLR</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <meta name="description" content="Contact the Association of Timorese Students in Romania - AETLR">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0A2540;
+            --accent: #C8102E;
+        }
 
-    <!-- Top Header Bar -->
-    <div class="top-header">
-        <div class="container">
-            <div>
-                📧 <a href="mailto:tl.romania0@gmail.com">tl.romania0@gmail.com</a> |
-                📞 <a href="tel:+40744369176">+40 744 369 176</a>
+        * {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #C8102E;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .cursor-dot {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: #C8102E;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        body:hover .cursor,
+        body:hover .cursor-dot {
+            display: block;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: #C8102E;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
+
+        .contact-card {
+            transition: all 0.4s ease;
+        }
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 overflow-x-hidden">
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Top Header -->
+    <div class="bg-white border-b py-3 text-sm">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-6">
+                <a href="mailto:tl.romania0@gmail.com" class="flex items-center gap-2 hover:text-red-600">
+                    <i class="fas fa-envelope"></i> tl.romania0@gmail.com
+                </a>
+                <a href="tel:+40744369176" class="flex items-center gap-2 hover:text-red-600">
+                    <i class="fas fa-phone"></i> +40 744 369 176
+                </a>
             </div>
-            <div>
-                <a href="contact.html">Contact</a>
-                <a href="about.html">About</a>
+            <div class="flex gap-6">
+                <a href="contact.html" class="text-red-600 font-medium">Contact</a>
+                <a href="about.html" class="hover:text-red-600">About</a>
             </div>
         </div>
     </div>
 
-    <!-- Main Header -->
-    <header>
-        <div class="header-content">
-            <div class="logo-section">
-                <img src="Asociatia Studentilor Timorezi Din Romania.jpeg" alt="AETLR Logo" class="logo">
-                <div class="title-section">
-                    <h1>ASSOSIASAUN ESTUDANTE TIMOR-LESTE IHA ROMANIA</h1>
-                   
-                    <p>Association of Timorese Students in Romania</p>
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <img src="Asociatia Studentilor Timorezi Din Romania.jpeg" alt="AETLR Logo" class="w-12 h-12 rounded-xl object-cover">
+                <div>
+                    <h1 class="text-xl font-bold text-gray-900">AETLR</h1>
+                    <p class="text-xs text-gray-500">Association of Timorese Students in Romania</p>
                 </div>
             </div>
-        </div>
-    </header>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="index.html">HOME</a>
-            <a href="about.html">ABOUT US</a>
-            <a href="programs.html">PROGRAMS</a>
-            <a href="contact.html" class="active">CONTACT</a>
-            <a href="scholarship.html">SCHOLARSHIP</a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="index.html" class="nav-link text-gray-700 hover:text-red-600">HOME</a>
+                <a href="about.html" class="nav-link text-gray-700 hover:text-red-600">ABOUT US</a>
+                
+                <div class="relative group">
+                    <a href="programs.html" class="nav-link text-gray-700 hover:text-red-600 flex items-center gap-1">
+                        PROGRAMS <i class="fas fa-chevron-down text-xs"></i>
+                    </a>
+                    <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-2xl py-3 px-6 w-52 mt-3 z-50">
+                        <a href="scholarship.html" class="block py-2 hover:text-red-600">Scholarship</a>
+                    </div>
+                </div>
+
+                <a href="contact.html" class="nav-link text-red-600 active">CONTACT</a>
+            </div>
+
+            <a href="mailto:tl.romania0@gmail.com" 
+               class="bg-red-600 text-white px-6 py-3 rounded-2xl font-semibold flex items-center gap-2 hover:scale-105">
+                <i class="fas fa-envelope"></i> Email Us
+            </a>
         </div>
     </nav>
 
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-[#0A2540] to-[#1E3A5F] text-white py-24">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">Contact Us</h1>
+            <p class="text-xl max-w-2xl mx-auto opacity-90">
+                We're here to support you. Reach out with any questions, concerns, or ideas.
+            </p>
+        </div>
+    </section>
+
     <!-- Main Content -->
-    <div class="content-grid">
-        <div class="main-content">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid md:grid-cols-12 gap-12">
 
-            <section>
-                <h2>Contact Us / Kontaktu Ami</h2>
-                <p>We're here to help! Whether you have questions, need support, or want to get involved, don't hesitate to reach out.</p>
-                <p><strong>Tetum:</strong> Ami iha ne'e atu ajuda! Se ita iha pergunta ka presiza apoiu, la hesita kontaktu ami.</p>
-            </section>
+            <!-- Contact Form & Info -->
+            <div class="md:col-span-8 space-y-12">
 
-            <section>
-                <h2>Get In Touch / Halo Kontaktu</h2>
-
-                <div class="contact-info">
-                    <p><strong>📧 Email:</strong>
-                        <a href="mailto:tl.romania0@gmail.com">tl.romania0@gmail.com</a>
-                    </p>
-
-                    <p><strong>📞 Phone:</strong>
-                        <a href="tel:+40744369176">+40 744 369 176</a>
-                    </p>
-
-                    <p><strong>📱 WhatsApp:</strong>
-                        <a href="https://wa.me/40744369176" target="_blank">+40 744 369 176</a>
-                    </p>
+                <!-- Contact Information -->
+                <div class="contact-card bg-white rounded-3xl p-10 shadow-sm border">
+                    <h2 class="text-3xl font-bold mb-8 flex items-center gap-4">
+                        <span class="text-4xl">📍</span> Get in Touch
+                    </h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <p class="font-semibold text-lg mb-2">Email</p>
+                            <a href="mailto:tl.romania0@gmail.com" class="text-red-600 hover:underline text-xl">
+                                tl.romania0@gmail.com
+                            </a>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-lg mb-2">Phone / WhatsApp</p>
+                            <a href="tel:+40744369176" class="text-red-600 hover:underline text-xl">
+                                +40 744 369 176
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="card">
-                    <h3>💬 Send Us a Message</h3>
-
-                    <form action="#" method="post">
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required>
+                <!-- Message Form -->
+                <div class="contact-card bg-white rounded-3xl p-10 shadow-sm border">
+                    <h2 class="text-3xl font-bold mb-8">Send Us a Message</h2>
+                    <form action="#" method="post" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                                <input type="text" id="name" required 
+                                       class="w-full px-5 py-4 border border-gray-300 rounded-2xl focus:outline-none focus:border-red-600">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                                <input type="email" id="email" required 
+                                       class="w-full px-5 py-4 border border-gray-300 rounded-2xl focus:outline-none focus:border-red-600">
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Subject *</label>
+                            <input type="text" id="subject" required 
+                                   class="w-full px-5 py-4 border border-gray-300 rounded-2xl focus:outline-none focus:border-red-600">
                         </div>
 
-                        <div class="form-group">
-                            <label for="subject">Subject *</label>
-                            <input type="text" id="subject" name="subject" required>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                            <textarea id="message" rows="6" required 
+                                      class="w-full px-5 py-4 border border-gray-300 rounded-3xl focus:outline-none focus:border-red-600"></textarea>
                         </div>
 
-                        <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn">Send Message</button>
+                        <button type="submit" 
+                                class="w-full md:w-auto bg-red-600 hover:bg-red-700 text-white font-semibold px-10 py-5 rounded-3xl text-lg flex items-center justify-center gap-3">
+                            <i class="fas fa-paper-plane"></i> 
+                            Send Message
+                        </button>
                     </form>
                 </div>
-            </section>
+            </div>
 
+            <!-- Sidebar -->
+            <div class="md:col-span-4 space-y-8">
+
+                <div class="contact-card bg-white rounded-3xl p-8 shadow-sm">
+                    <h3 class="text-2xl font-semibold mb-6">⚡ Quick Contact</h3>
+                    <div class="space-y-5">
+                        <a href="mailto:tl.romania0@gmail.com" class="flex items-center gap-4 hover:text-red-600">
+                            <i class="fas fa-envelope text-2xl text-red-600"></i>
+                            <div>
+                                <p class="font-medium">Email Us</p>
+                                <p class="text-sm text-gray-500">tl.romania0@gmail.com</p>
+                            </div>
+                        </a>
+                        <a href="https://wa.me/40744369176" target="_blank" class="flex items-center gap-4 hover:text-red-600">
+                            <i class="fab fa-whatsapp text-2xl text-green-600"></i>
+                            <div>
+                                <p class="font-medium">WhatsApp</p>
+                                <p class="text-sm text-gray-500">+40 744 369 176</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-card bg-white rounded-3xl p-8 shadow-sm">
+                    <h3 class="text-2xl font-semibold mb-6">📱 Follow Us</h3>
+                    <div class="flex gap-4">
+                        <a href="https://www.instagram.com/tl.romania/" target="_blank"
+                           class="w-14 h-14 bg-gradient-to-br from-pink-500 to-red-600 text-white rounded-2xl flex items-center justify-center text-3xl hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@tl_romania5" target="_blank"
+                           class="w-14 h-14 bg-black text-white rounded-2xl flex items-center justify-center text-3xl hover:scale-110">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
         </div>
-
-        <!-- Sidebar -->
-        <aside class="sidebar">
-
-            <div class="sidebar-box">
-                <h3>⚡ Quick Contact</h3>
-                <p>📧 <a href="mailto:tl.romania0@gmail.com">tl.romania0@gmail.com</a></p>
-                <p>📞 <a href="tel:+40744369176">+40 744 369 176</a></p>
-                <br>
-                
-            </div>
-
-            <div class="sidebar-box">
-                <h3>📱 Social Media</h3>
-                <ul>
-                    <li><a href="https://www.instagram.com/tl.romania/" target="_blank">📷 Instagram</a></li>
-                    <li><a href="https://www.tiktok.com/@tl_romania5" target="_blank">🎵 TikTok</a></li>
-                </ul>
-            </div>
-
-        </aside>
     </div>
 
     <!-- Footer -->
-    <footer>
-        <h3>ASSOSIASAUN ESTUDANTE TIMOR-LESTE IHA ROMANIA</h3>
-        <p>Association of Timorese Students in Romania</p>
+    <footer class="bg-[#0A2540] text-white py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h3 class="text-3xl font-bold mb-2">AETLR</h3>
+            <p class="text-gray-400 mb-8">Association of Timorese Students in Romania</p>
+            
+            <div class="flex flex-wrap justify-center gap-8 text-sm mb-10">
+                <a href="about.html" class="hover:text-red-400">About</a>
+                <a href="programs.html" class="hover:text-red-400">Programs</a>
+                <a href="scholarship.html" class="hover:text-red-400">Scholarship</a>
+                <a href="contact.html" class="hover:text-red-400">Contact</a>
+            </div>
 
-        <div class="footer-links">
-            <a href="about.html">About</a>
-            <a href="events.html">Events</a>
-            <a href="programs.html">Programs</a>
-            <a href="contact.html">Contact</a>
+            <p class="text-sm text-gray-400">© 2026 AETLR. All rights reserved.</p>
+            <p class="text-sm text-gray-500 mt-2">🇹🇱 Building bridges between Timor-Leste and Romania 🇷🇴</p>
         </div>
-
-        <p>&copy; 2026 AETLR. All rights reserved.</p>
-        <p>🇹🇱 Building bridges between Timor-Leste and Romania 🇷🇴</p>
     </footer>
 
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+        });
+
+        document.addEventListener('mousedown', () => cursor.style.transform = 'translate(-50%, -50%) scale(0.6)');
+        document.addEventListener('mouseup', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
+    </script>
 </body>
 </html>
